@@ -7,7 +7,27 @@
     "dev": "concurrently -k \"vite\" \"wait-on http://127.0.0.1:5173 && electron .\"",
     "build": "vite build",
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.samar.hermesdock",
+    "productName": "Hermes Dock",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "src/main/**/*",
+      "src/preload/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": "AppImage"
+    },
+    "win": {
+      "target": "nsis"
+    }
   },
   "keywords": [],
   "author": "",
